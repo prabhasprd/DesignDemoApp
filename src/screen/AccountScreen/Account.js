@@ -123,6 +123,7 @@ const Account = () => {
                   fontSize: moderateScale(18),
                   fontFamily: 'Philosopher-Regular',
                   color: isEdit ? '#9a73ef' : '#000000',
+                  width: screenDimension.width - 60,
                 }}
                 editable={!isEdit}
                 value={name}
@@ -149,6 +150,7 @@ const Account = () => {
                   fontSize: moderateScale(18),
                   fontFamily: 'Philosopher-Regular',
                   color: isEdit ? '#9a73ef' : '#000000',
+                  width: screenDimension.width - 60,
                 }}
                 editable={!isEdit}
                 maxLength={10}
@@ -176,6 +178,7 @@ const Account = () => {
                   fontSize: moderateScale(18),
                   fontFamily: 'Philosopher-Regular',
                   color: isEdit ? '#9a73ef' : '#000000',
+                  width: screenDimension.width - 60,
                 }}
                 maxLength={30}
                 placeholder="Enter your e-mail"
@@ -202,6 +205,7 @@ const Account = () => {
                   fontSize: moderateScale(18),
                   fontFamily: 'Philosopher-Regular',
                   color: isEdit ? '#9a73ef' : '#000000',
+                  width: screenDimension.width - 60,
                 }}
                 secureTextEntry={true}
                 maxLength={20}
@@ -230,6 +234,7 @@ const Account = () => {
                   fontSize: moderateScale(18),
                   fontFamily: 'Philosopher-Regular',
                   color: isEdit ? '#9a73ef' : '#000000',
+                  width: screenDimension.width - 60,
                 }}
                 maxLength={20}
                 placeholder="Enter your country"
