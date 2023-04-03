@@ -12,9 +12,11 @@ const Home = () => {
   }, []);
 
   const retriveUserData = async () => {
-    let data = await basicApiCall();
+    const data = await basicApiCall();
     setTableData(data);
   };
+
+  console.log('askjdgjagsh');
 
   return (
     <SafeAreaView

@@ -56,7 +56,7 @@ const Account = () => {
       dispatch(updateUserDatails(userDetails));
     }
   };
-
+  console.log('asdkhask');
   return (
     <SafeAreaView
       style={{
