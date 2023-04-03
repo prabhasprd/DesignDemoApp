@@ -101,7 +101,7 @@ const Setting = () => {
           scrollEnabled={false}
           keyExtractor={(item, index) => index.toString()}
           renderItem={({item}) => (
-            <View style={{paddingHorizontal: 10, paddingVertical: 10}}>
+            <View style={{}}>
               <PhotoGallary />
             </View>
           )}
