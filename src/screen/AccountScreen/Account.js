@@ -66,8 +66,11 @@ const Account = () => {
         backgroundColor: COLORS.ACCOUNT_UI.backgroundColor,
         height: screenDimension.height,
       }}>
-      <KeyboardAvoidingView behavior={Platform.OS === 'ios' ? 'padding' : null}>
-        <ScrollViewComponent>
+      <ScrollViewComponent>
+        <KeyboardAvoidingView
+          behavior={'position'}
+          style={{flex: 1}}
+          keyboardVerticalOffset={Platform.OS === 'ios' ? 10 : 30}>
           <SafeAreaView
             style={{
               marginBottom: moderateScale(10),
@@ -88,12 +91,10 @@ const Account = () => {
               />
               <Text
                 style={{
-                  fontFamily: 'Philosopher-Regular',
                   fontSize: 23,
                 }}>{`Prabhas Ranjan Das`}</Text>
               <Text
                 style={{
-                  fontFamily: 'Philosopher-Regular',
                   fontSize: 15,
                 }}>{`Bangalore, INDIA`}</Text>
             </View>
@@ -121,7 +122,7 @@ const Account = () => {
                   height: 40,
                   paddingLeft: moderateScale(20),
                   fontSize: moderateScale(18),
-                  fontFamily: 'Philosopher-Regular',
+
                   color: isEdit ? '#9a73ef' : '#000000',
                   width: screenDimension.width - 60,
                 }}
@@ -148,7 +149,7 @@ const Account = () => {
                   height: 40,
                   paddingLeft: moderateScale(20),
                   fontSize: moderateScale(18),
-                  fontFamily: 'Philosopher-Regular',
+
                   color: isEdit ? '#9a73ef' : '#000000',
                   width: screenDimension.width - 60,
                 }}
@@ -176,7 +177,7 @@ const Account = () => {
                   height: 40,
                   paddingLeft: moderateScale(20),
                   fontSize: moderateScale(18),
-                  fontFamily: 'Philosopher-Regular',
+
                   color: isEdit ? '#9a73ef' : '#000000',
                   width: screenDimension.width - 60,
                 }}
@@ -203,7 +204,7 @@ const Account = () => {
                   height: 40,
                   paddingLeft: moderateScale(20),
                   fontSize: moderateScale(18),
-                  fontFamily: 'Philosopher-Regular',
+
                   color: isEdit ? '#9a73ef' : '#000000',
                   width: screenDimension.width - 60,
                 }}
@@ -232,7 +233,7 @@ const Account = () => {
                   height: 40,
                   paddingLeft: moderateScale(20),
                   fontSize: moderateScale(18),
-                  fontFamily: 'Philosopher-Regular',
+
                   color: isEdit ? '#9a73ef' : '#000000',
                   width: screenDimension.width - 60,
                 }}
@@ -244,8 +245,8 @@ const Account = () => {
               />
             </View>
           </SafeAreaView>
-        </ScrollViewComponent>
-      </KeyboardAvoidingView>
+        </KeyboardAvoidingView>
+      </ScrollViewComponent>
     </SafeAreaView>
   );
 };

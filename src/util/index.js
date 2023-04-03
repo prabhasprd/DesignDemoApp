@@ -5,8 +5,8 @@ const {width, height} = Dimensions.get('window');
 const [shortDimension, longDimension] =
   width < height ? [width, height] : [height, width];
 
-const guidelineBaseWidth = width;
-const guidelineBaseHeight = height;
+const guidelineBaseWidth = 350;
+const guidelineBaseHeight = 680;
 
 export const screenDimension = {height, width};
 

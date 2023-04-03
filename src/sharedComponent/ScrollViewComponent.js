@@ -5,6 +5,7 @@ import {screenDimension} from '../util';
 const ScrollViewComponent = props => {
   return (
     <ScrollView
+      contentContainerStyle={{flexGrow: 1}}
       style={{
         width: screenDimension.width,
         flex: 1,
