@@ -26,8 +26,8 @@ const Account = () => {
     item => item.name === 'Prabhas Ranjan Das',
   );
   const [isEdit, setIsEdit] = useState(true);
-  const [name, setName] = useState(userData[0]?.name || 'john wick');
-  const [phone, setPhone] = useState(userData[0]?.phone || '8080808080');
+  const [name, setName] = useState(userData[0]?.name);
+  const [phone, setPhone] = useState(userData[0]?.phone);
   const [email, setEmail] = useState(
     userData[0]?.email || 'john.wick@syndicate.com',
   );
@@ -38,10 +38,7 @@ const Account = () => {
 
   const dispatch = useDispatch();
 
-  console.log('userData ==>', userData);
-
   const onClickSave = boolean => {
-    console.log('boolean', boolean);
     Keyboard.dismiss();
     setIsEdit(boolean);
     if (boolean) {
@@ -52,11 +49,10 @@ const Account = () => {
         password,
         country,
       };
-      console.log('save');
       dispatch(updateUserDatails(userDetails));
     }
   };
-  console.log('asdkhask');
+
   return (
     <SafeAreaView
       style={{
@@ -92,7 +88,9 @@ const Account = () => {
               <Text
                 style={{
                   fontSize: 23,
-                }}>{`Prabhas Ranjan Das`}</Text>
+                }}>
+                {name}
+              </Text>
               <Text
                 style={{
                   fontSize: 15,

@@ -1,0 +1,19 @@
+{
+  "home": {
+    "name": "NAME",
+    "username": "USER NAME",
+    "phone": "PHONE",
+    "website": "WEBSITE"
+  },
+  "custombutton": {
+    "message": "Message"
+  },
+  "Account": {
+    "name": "NAME",
+    "location": "Location"
+  },
+  "setting": {
+    "followers": "Followers",
+    "following": "Following"
+  }
+}

@@ -7,6 +7,7 @@ import {
   Image,
   FlatList,
 } from 'react-native';
+import {useSelector} from 'react-redux';
 import {
   moderateScale,
   moderateVerticalScale,
@@ -25,6 +26,9 @@ import Back from '../../assets/profiles/Back.png';
 import styles from './styles';
 
 const Setting = () => {
+  const language = useSelector(
+    state => state.appconfigLanguageReducer.language,
+  );
   const {height, width} = screenDimension;
   let leftButton = {
     name: 'leftButton',
@@ -71,11 +75,15 @@ const Setting = () => {
         <View style={styles.followingStyle}>
           <View style={{alignItems: 'center'}}>
             <Text style={styles.followerValue}>43.5K</Text>
-            <Text style={styles.followerText}>Followers</Text>
+            <Text style={styles.followerText}>
+              {language.setting.followers}
+            </Text>
           </View>
           <View style={{alignItems: 'center'}}>
             <Text style={styles.followerValue}>537</Text>
-            <Text style={styles.followerText}>Following</Text>
+            <Text style={styles.followerText}>
+              {language.setting.following}
+            </Text>
           </View>
         </View>
         <View style={styles.profileView}>
@@ -95,7 +103,7 @@ const Setting = () => {
           <View style={{width: moderateVerticalScale(20)}} />
           <CustomButton title={`Message`} />
         </View>
-        <FlatList
+        {/* <FlatList
           numColumns={3}
           showsHorizontalScrollIndicator={false}
           scrollEnabled={false}
@@ -108,7 +116,7 @@ const Setting = () => {
           data={arrayData || []}
           onEndReachedThreshold={0.8}
           contentContainerStyle={{flex: 1, width, backgroundColor: 'red'}}
-        />
+        /> */}
       </SafeAreaView>
     </ScrollViewComponent>
   );

@@ -5,7 +5,6 @@ export const userReducer = (state = INITIAL_STATE.userDetails, action) => {
   switch (action.type) {
     case STORE_DETAILS:
       return [
-        ...state,
         {
           name: action.payload.name,
           phone: action.payload.phone,

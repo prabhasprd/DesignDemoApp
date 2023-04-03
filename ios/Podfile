@@ -12,6 +12,8 @@ target 'NavigationApp' do
     :hermes_enabled => false
   )
 
+  pod 'RNLocalize', :path => '../node_modules/react-native-localize'
+
   target 'NavigationAppTests' do
     inherit! :complete
     # Pods for testing

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useRef} from 'react';
 import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 import Home from '../screen/HomeScreen/Home';
 import About from '../screen/SettingScreen/Setting';
@@ -7,7 +7,7 @@ import {NavigationContainer} from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const Tab = createBottomTabNavigator();
-
+// const ref = useRef();
 const Router = () => (
   <NavigationContainer>
     <Tab.Navigator

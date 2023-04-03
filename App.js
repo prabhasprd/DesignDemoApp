@@ -1,5 +1,5 @@
 import React from 'react';
-import Router from './src/navigation/Router';
+import WrapperApp from './src/navigation/Wrapper';
 import {Provider} from 'react-redux';
 import {PersistGate} from 'redux-persist/integration/react';
 import {persistStore} from 'redux-persist';
@@ -12,7 +12,7 @@ const App = () => {
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <Router />
+        <WrapperApp />
       </PersistGate>
     </Provider>
   );
