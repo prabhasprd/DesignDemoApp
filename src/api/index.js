@@ -1,11 +1,11 @@
 import axios from 'axios';
-const baseUrl = 'https://jsonplaceholder.typicode.com/users';
+import {BASE_URL} from '@env';
 
 export const basicApiCall = async () => {
   return new Promise(async (resolve, reject) => {
     await axios({
       method: 'get',
-      url: `${baseUrl}`,
+      url: `${BASE_URL}`,
     }).then(response => {
       resolve(response.data);
     });
