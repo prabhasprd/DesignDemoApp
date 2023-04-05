@@ -1,23 +1,35 @@
-import React, {useEffect} from 'react';
-import {BackHandler} from 'react-native';
+import React, {useEffect, useState} from 'react';
+import {BackHandler, Appearance} from 'react-native';
 import {useDispatch} from 'react-redux';
-import Router from './Router';
+import CustomStackNavigator from './CustomStackNavigator';
 import * as RNLocalize from 'react-native-localize';
-import {systemLanguage} from '../redux/action/appconfig';
+import {systemLanguage, systemTheme} from '../redux/action/appconfig';
 import {languageData} from '../util/language/index';
+import {darkThemeColor, lightThemeColor} from '../util/colors';
+import {ReduxDispatch} from '../redux/store/type';
+import {AppProps, ColorSchemaType} from './type';
 
 const Wrapper = () => {
-  const dispatch = useDispatch();
+  const [theme, setTheme] = useState<AppProps['theme']>(lightThemeColor);
+  const dispatch: ReduxDispatch = useDispatch();
+
   useEffect(() => {
-    const backAction = () => {
+    const backAction = (): boolean => {
       return true;
     };
     const backHandler = BackHandler.addEventListener(
       'hardwareBackPress',
       backAction,
     );
-    return () => backHandler.remove();
+    return (): void => backHandler.remove();
   }, []);
+
+  function onThemeChange({colorScheme}: ColorSchemaType): void {
+    const selectTheme =
+      colorScheme === 'dark' ? lightThemeColor : darkThemeColor;
+    setTheme(selectTheme);
+    dispatch(systemTheme(selectTheme));
+  }
 
   useEffect(() => {
     onHandleChangeLanguage();
@@ -27,17 +39,20 @@ const Wrapper = () => {
     RNLocalize.removeEventListener('change', () => onHandleChangeLanguage);
   }, []);
 
-  const onHandleChangeLanguage = () => {
+  useEffect(() => {
+    const colorScheme = Appearance.getColorScheme();
+    onThemeChange({colorScheme});
+    const AppearanceListener = Appearance.addChangeListener(onThemeChange);
+    return () => {
+      AppearanceListener.remove();
+    };
+  }, []);
+
+  const onHandleChangeLanguage = (): void => {
     const retriveLanguage = RNLocalize.getLocales();
-    const language = Boolean(retriveLanguage.length)
+    const language: string = Boolean(retriveLanguage.length)
       ? retriveLanguage[0].languageTag.replace('-', '_')
       : 'en_US';
-    console.log(
-      'languageData',
-      Boolean(languageData[language])
-        ? languageData[language]
-        : languageData.en_US,
-    );
 
     dispatch(
       systemLanguage(
@@ -47,7 +62,7 @@ const Wrapper = () => {
       ),
     );
   };
-  return <Router />;
+  return <CustomStackNavigator theme={theme} />;
 };
 
 export default Wrapper;
