@@ -1,8 +1,9 @@
 import React from 'react';
 import {Text, TouchableOpacity} from 'react-native';
 import styles from './styles';
+import {Props} from './type';
 
-const CustomButton = props => {
+const CustomButton = (props: Props) => {
   const {title} = props;
   const active = title === 'Message' ? false : true;
   return (

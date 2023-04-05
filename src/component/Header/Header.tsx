@@ -7,11 +7,14 @@ import {
   scale,
   verticalScale,
 } from '../../util';
-import {COLORS} from '../../util/colors';
+import {lightThemeColor} from '../../util/colors';
+import Icon from 'react-native-vector-icons/AntDesign';
+import {Props} from './type';
 
-const Header = ({leftButton, rightButton, middleText, style = {}}) => {
+const Header = (props: Props) => {
+  const {leftButton, rightButton, style = {}} = props;
+
   const {height, width} = screenDimension;
-  console.log('leftButton', leftButton);
   return (
     <SafeAreaView style={style}>
       <View
@@ -31,11 +34,11 @@ const Header = ({leftButton, rightButton, middleText, style = {}}) => {
               height: moderateVerticalScale(50),
               width: moderateVerticalScale(50),
               borderRadius: moderateVerticalScale(25),
-              backgroundColor: COLORS.generalColor.white,
+              backgroundColor: lightThemeColor.generalColor.white,
               alignItems: 'center',
               justifyContent: 'center',
             }}>
-            <Image source={leftButton.image} />
+            <Image source={rightButton.image} />
           </TouchableOpacity>
         )}
 
@@ -47,11 +50,11 @@ const Header = ({leftButton, rightButton, middleText, style = {}}) => {
               height: moderateVerticalScale(50),
               width: moderateVerticalScale(50),
               borderRadius: moderateVerticalScale(25),
-              backgroundColor: COLORS.generalColor.white,
+              backgroundColor: lightThemeColor.generalColor.white,
               alignItems: 'center',
               justifyContent: 'center',
             }}>
-            <Image source={rightButton?.image} />
+            <Icon name="logout" size={30} color={'#c0c0c0'} />
           </TouchableOpacity>
         )}
       </View>

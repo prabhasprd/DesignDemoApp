@@ -1,50 +1,50 @@
 import {StyleSheet} from 'react-native';
 import {screenDimension, moderateVerticalScale} from '../../util';
-import {COLORS} from '../../util/colors';
+import {lightThemeColor} from '../../util/colors';
 
 const {width} = screenDimension;
 
 const styles = StyleSheet.create({
   buttonStyle: {
     flex: 1,
-    backgroundColor: COLORS.porfileScreenColor.buttonActiveColor,
+    backgroundColor: lightThemeColor.porfileScreenColor.buttonActiveColor,
     height: moderateVerticalScale(50),
     justifyContent: 'center',
     borderRadius: 100,
-    shadowColor: COLORS.generalColor.black,
+    shadowColor: lightThemeColor.generalColor.black,
     shadowOffset: {width: -2, height: 4},
     shadowOpacity: 0.2,
     shadowRadius: 3,
     elevation: 10,
-    shadowColor: COLORS.porfileScreenColor.buttonActiveColor,
+    shadowColor: lightThemeColor.porfileScreenColor.buttonActiveColor,
     borderWidth: 2,
-    borderColor: COLORS.porfileScreenColor.buttonActiveColor,
+    borderColor: lightThemeColor.porfileScreenColor.buttonActiveColor,
   },
   normalButtonStyle: {
     flex: 1,
-    backgroundColor: COLORS.generalColor.white,
+    backgroundColor: lightThemeColor.generalColor.white,
     height: moderateVerticalScale(50),
     justifyContent: 'center',
     borderRadius: 100,
-    shadowColor: COLORS.generalColor.black,
+    shadowColor: lightThemeColor.generalColor.black,
     shadowOffset: {width: -2, height: 4},
     shadowOpacity: 0.2,
     shadowRadius: 3,
     elevation: 10,
-    shadowColor: COLORS.generalColor.black,
+    shadowColor: lightThemeColor.generalColor.black,
     borderWidth: 2,
     borderColor: 'rgba(169, 116, 255, 0.32)',
   },
   textStyle: {
     fontWeight: '500',
     fontSize: 15,
-    color: COLORS.generalColor.white,
+    color: lightThemeColor.generalColor.white,
     textAlign: 'center',
   },
   normalTextStyle: {
     fontWeight: '500',
     fontSize: 15,
-    color: COLORS.porfileScreenColor.midnightBlue,
+    color: lightThemeColor.porfileScreenColor.midnightBlue,
     textAlign: 'center',
   },
 });
