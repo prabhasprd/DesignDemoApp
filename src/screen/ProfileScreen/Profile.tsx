@@ -15,7 +15,7 @@ import {
   screenDimension,
   verticalScale,
 } from '../../util';
-import {COLORS} from '../../util/colors';
+import {lightThemeColor} from '../../util/colors';
 import ScrollViewComponent from '../../sharedComponent/ScrollViewComponent';
 import Header from '../../component/Header/Header';
 import CustomButton from '../../component/CustomButton/CustomButton';
@@ -24,30 +24,49 @@ import coverPhoto from '../../assets/profiles/CoverPhoto.png';
 import Message from '../../assets/profiles/Message.png';
 import Back from '../../assets/profiles/Back.png';
 import styles from './styles';
+import {Props} from '../../navigation/type';
+import {ReduxState} from '../../redux/store/type';
+import {ButtonProps} from './type';
+import {
+  NavigationProp,
+  ParamListBase,
+  RouteProp,
+} from '@react-navigation/native';
 
-const Setting = () => {
+export type ProfileProps = {
+  navigation: NavigationProp<ParamListBase>;
+  route: RouteProp<ParamListBase>;
+};
+
+const Profile = (props: ProfileProps) => {
+  const {navigation} = props;
+
   const language = useSelector(
-    state => state.appconfigLanguageReducer.language,
+    (state: ReduxState) => state.appconfigLanguageReducer.language,
   );
   const {height, width} = screenDimension;
-  let leftButton = {
+  let leftButton: ButtonProps = {
     name: 'leftButton',
     image: Back,
-    onPress: () => {},
+    onPress: (): void => {},
   };
 
-  let rightButton = {
+  let rightButton: ButtonProps = {
     name: 'rightButton',
     image: Message,
-    onPress: () => {},
+    onPress: (): void => {
+      navigation.navigate('Login');
+    },
   };
+
   let arrayData = ['a', 'b', 'c', 'd'];
+
   return (
     <ScrollViewComponent>
       <SafeAreaView
         style={{
           flex: 1,
-          backgroundColor: COLORS.generalColor.white,
+          backgroundColor: lightThemeColor.generalColor.white,
           width,
           alignItems: 'center',
         }}>
@@ -122,4 +141,4 @@ const Setting = () => {
   );
 };
 
-export default Setting;
+export default Profile;

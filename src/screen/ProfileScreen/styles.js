@@ -1,5 +1,5 @@
 import {StyleSheet} from 'react-native';
-import {COLORS} from '../../util/colors';
+import {lightThemeColor} from '../../util/colors';
 import {Dimensions} from 'react-native';
 import {moderateVerticalScale, screenDimension} from '../../util';
 
@@ -11,15 +11,15 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     fontSize: 17,
     lineHeight: 22,
-    color: COLORS.porfileScreenColor.midnightBlue,
+    color: lightThemeColor.porfileScreenColor.midnightBlue,
   },
   followerText: {
     fontStyle: 'normal',
     fontWeight: '400',
     fontSize: 14,
     lineHeight: 18,
-    color: COLORS.porfileScreenColor.midnightBlueLight,
-    textShadowColor: COLORS.porfileScreenColor.textShadowColor,
+    color: lightThemeColor.porfileScreenColor.midnightBlueLight,
+    textShadowColor: lightThemeColor.porfileScreenColor.textShadowColor,
   },
   followingStyle: {
     flexDirection: 'row',
@@ -36,7 +36,7 @@ const styles = StyleSheet.create({
     fontWeight: '500',
     fontSize: 17,
     lineHeight: 22,
-    color: COLORS.porfileScreenColor.midnightBlue,
+    color: lightThemeColor.porfileScreenColor.midnightBlue,
     textShadowOffset: {width: 10, height: 12},
     textShadowRadius: 12,
     textShadowColor: 'blue',

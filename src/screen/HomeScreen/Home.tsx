@@ -1,16 +1,27 @@
 import React, {useState, useEffect} from 'react';
-import {SafeAreaView, Text, FlatList, View, Image} from 'react-native';
+import {
+  SafeAreaView,
+  Text,
+  FlatList,
+  View,
+  Image,
+  StatusBar,
+} from 'react-native';
 import {useSelector} from 'react-redux';
 import {basicApiCall} from '../../api';
 import {screenDimension} from '../../util';
 import Back from '../../assets/profiles/CoverPhoto.png';
 import CardComponet from './CardComponet';
+import {ReduxState} from '../../redux/store/type';
 
 const Home = () => {
   const language = useSelector(
-    (state: any) => state.appconfigLanguageReducer.language,
+    (state: ReduxState) => state.appconfigLanguageReducer.language,
   );
-  const [tableData, setTableData] = useState([]);
+  const theme = useSelector(
+    (state: ReduxState) => state.appconfigLanguageReducer.theme,
+  );
+  const [tableData, setTableData] = useState<any>([]);
 
   useEffect(() => {
     retriveUserData();
@@ -28,6 +39,10 @@ const Home = () => {
         alignItems: 'center',
       }}>
       <Image source={Back} />
+      <Text>
+        {theme?.BOTTOM_BAR?.backgroundColor}{' '}
+        {theme?.BOTTOM_BAR?.backgroundColor === '#FFFFFF' ? 'dark' : 'light'}
+      </Text>
       <FlatList
         data={tableData}
         showsVerticalScrollIndicator={false}

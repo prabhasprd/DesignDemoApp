@@ -11,38 +11,45 @@ import {
   Keyboard,
 } from 'react-native';
 import {useSelector, useDispatch} from 'react-redux';
-import {COLORS} from '../../util/colors';
+import {lightThemeColor} from '../../util/colors';
 import {screenDimension, moderateScale} from '../../util';
 import ScrollViewComponent from '../../sharedComponent/ScrollViewComponent';
 import Profile from '../../assets/profiles/demo.png';
 import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
 import IconFontAwesome from 'react-native-vector-icons/FontAwesome5';
 import {updateUserDatails} from '../../redux/action';
+import {ReduxDispatch, ReduxState} from '../../redux/store/type';
+
+interface UserData {
+  name: string;
+  phone: string;
+  email: string;
+  password: string;
+  country: string;
+}
 
 const Account = () => {
-  const userDataArray = useSelector(state => state.userReducer);
-
-  const userData = userDataArray.filter(
-    item => item.name === 'Prabhas Ranjan Das',
+  const userData = useSelector((state: ReduxState) => state.userReducer);
+  const [isEdit, setIsEdit] = useState<boolean>(true);
+  const [name, setName] = useState<string>(userData[0]?.name || 'John Wick');
+  const [phone, setPhone] = useState<string>(
+    userData[0]?.phone || '8989898989',
   );
-  const [isEdit, setIsEdit] = useState(true);
-  const [name, setName] = useState(userData[0]?.name);
-  const [phone, setPhone] = useState(userData[0]?.phone);
-  const [email, setEmail] = useState(
+  const [email, setEmail] = useState<string>(
     userData[0]?.email || 'john.wick@syndicate.com',
   );
-  const [password, setPassword] = useState(
+  const [password, setPassword] = useState<string>(
     userData[0]?.password || '123456789',
   );
-  const [country, setCountry] = useState(userData[0]?.country || 'US');
+  const [country, setCountry] = useState<string>(userData[0]?.country || 'US');
 
-  const dispatch = useDispatch();
+  const dispatch: ReduxDispatch = useDispatch();
 
-  const onClickSave = boolean => {
+  const onClickSave = (boolean: boolean): void => {
     Keyboard.dismiss();
     setIsEdit(boolean);
     if (boolean) {
-      const userDetails = {
+      const userDetails: UserData = {
         name,
         phone,
         email,
@@ -59,7 +66,7 @@ const Account = () => {
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
-        backgroundColor: COLORS.ACCOUNT_UI.backgroundColor,
+        backgroundColor: lightThemeColor.ACCOUNT_UI.backgroundColor,
         height: screenDimension.height,
       }}>
       <ScrollViewComponent>
