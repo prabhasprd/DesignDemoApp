@@ -1,33 +1,7 @@
-import {
-  SafeAreaView,
-  TouchableOpacity,
-  Text,
-  View,
-  StyleProp,
-  ViewStyle,
-} from 'react-native';
+import {SafeAreaView, TouchableOpacity, Text} from 'react-native';
 import React from 'react';
-import {lightThemeColor} from '../../util/colors';
-import {
-  NavigationProp,
-  ParamListBase,
-  RouteProp,
-} from '@react-navigation/native';
 import CustomIcon from '../../component/CustomIcon/CustomIcon';
-
-type LoginProps = {
-  focused?: boolean;
-  modal?: boolean;
-  navigation: NavigationProp<ParamListBase>;
-  route: RouteProp<ParamListBase>;
-  header?: React.ReactNode;
-  headerShown?: boolean;
-  headerStatusBarHeight?: number;
-  headerTransparent?: boolean;
-  style?: StyleProp<ViewStyle>;
-  children?: React.ReactNode;
-  theme: typeof lightThemeColor;
-};
+import {LoginProps} from './types';
 
 const Login = (props: LoginProps) => {
   const {navigation} = props;
@@ -39,10 +13,14 @@ const Login = (props: LoginProps) => {
   return (
     <SafeAreaView
       style={{alignItems: 'center', height: '100%', justifyContent: 'center'}}>
-      <Text style={{fontSize: 20, textAlign: 'center', margin: 10}}>
-        Auth0Sample - Navigation App
+      <Text
+        style={{
+          fontSize: 20,
+          textAlign: 'center',
+          margin: 10,
+        }}>
+        Auth0Sample - Navigation App Text
       </Text>
-      <CustomIcon name="android" />
       <TouchableOpacity
         onPress={onHandleNavigate}
         style={{
@@ -52,6 +30,7 @@ const Login = (props: LoginProps) => {
           alignItems: 'center',
           justifyContent: 'center',
         }}>
+        <CustomIcon name="android" />
         <Text>Navigation Screen</Text>
       </TouchableOpacity>
     </SafeAreaView>

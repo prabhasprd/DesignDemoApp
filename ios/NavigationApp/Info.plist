@@ -65,7 +65,7 @@
 		<string>font/Philosopher-BoldItalic.ttf</string>
 		<string>font/Philosopher-Italic.ttf</string>
 		<string>font/Philosopher-Regular.ttf</string>
-		<string>font/icomoon.ttf</string>
+		<string>icomoon.ttf</string>
 	</array>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen.storyboard</string>
