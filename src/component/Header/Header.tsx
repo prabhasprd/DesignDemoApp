@@ -54,7 +54,7 @@ const Header = (props: Props) => {
               alignItems: 'center',
               justifyContent: 'center',
             }}>
-            <Icon name="logout" size={30} color={'#c0c0c0'} />
+            <Icon name='logout' size={30} color={'#c0c0c0'} />
           </TouchableOpacity>
         )}
       </View>

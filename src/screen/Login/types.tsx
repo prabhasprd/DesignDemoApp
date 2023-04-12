@@ -3,10 +3,9 @@ import {
   ParamListBase,
   RouteProp,
 } from '@react-navigation/native';
-import {lightThemeColor} from '../../util/colors';
 import {StyleProp, ViewStyle} from 'react-native';
 
-export type LoginProps = {
+export type Props = {
   focused?: boolean;
   modal?: boolean;
   navigation: NavigationProp<ParamListBase>;
@@ -17,5 +16,4 @@ export type LoginProps = {
   headerTransparent?: boolean;
   style?: StyleProp<ViewStyle>;
   children?: React.ReactNode;
-  theme: typeof lightThemeColor;
 };

@@ -1,6 +1,6 @@
 
 import { StyleProp, ViewStyle } from 'react-native'
-import { ButtonProps } from "../../screen/ProfileScreen/type";
+import { ButtonProps } from '../../screen/ProfileScreen/type';
 
 export interface Props {
     leftButton: ButtonProps;

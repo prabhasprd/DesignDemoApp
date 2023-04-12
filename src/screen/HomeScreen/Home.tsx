@@ -1,12 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {
-  SafeAreaView,
-  Text,
-  FlatList,
-  View,
-  Image,
-  StatusBar,
-} from 'react-native';
+import {SafeAreaView, Text, FlatList, View, Image} from 'react-native';
 import {useSelector} from 'react-redux';
 import {basicApiCall} from '../../api';
 import {screenDimension} from '../../util';
@@ -37,12 +30,9 @@ const Home = () => {
       style={{
         flex: 1,
         alignItems: 'center',
+        backgroundColor: theme.HOME_SCREEN.backgroundColor,
       }}>
       <Image source={Back} />
-      <Text>
-        {theme?.BOTTOM_BAR?.backgroundColor}{' '}
-        {theme?.BOTTOM_BAR?.backgroundColor === '#FFFFFF' ? 'dark' : 'light'}
-      </Text>
       <FlatList
         data={tableData}
         showsVerticalScrollIndicator={false}
@@ -54,7 +44,7 @@ const Home = () => {
               paddingTop: 10,
               paddingBottom: 10,
             }}>
-            <CardComponet apiData={item} language={language} />
+            <CardComponet apiData={item} language={language} theme={theme} />
           </View>
         )}
         keyExtractor={(item, index) => index.toString()}

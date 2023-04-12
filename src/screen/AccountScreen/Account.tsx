@@ -45,10 +45,10 @@ const Account = () => {
 
   const dispatch: ReduxDispatch = useDispatch();
 
-  const onClickSave = (boolean: boolean): void => {
+  const onClickSave = (booleanValue: boolean): void => {
     Keyboard.dismiss();
-    setIsEdit(boolean);
-    if (boolean) {
+    setIsEdit(booleanValue);
+    if (booleanValue) {
       const userDetails: UserData = {
         name,
         phone,
@@ -121,7 +121,7 @@ const Account = () => {
                 paddingVertical: 20,
                 borderColor: '#c0c0c0',
               }}>
-              <Icon name="account-circle" size={30} color={'#9c27b0'} />
+              <Icon name='account-circle' size={30} color={'#9c27b0'} />
               <TextInput
                 style={{
                   height: 40,
@@ -134,8 +134,8 @@ const Account = () => {
                 editable={!isEdit}
                 value={name}
                 maxLength={30}
-                placeholder="Enter your name"
-                placeholderTextColor="#C0c0c0"
+                placeholder='Enter your name'
+                placeholderTextColor='#C0c0c0'
                 onChangeText={text => setName(text)}
               />
             </View>
@@ -148,7 +148,7 @@ const Account = () => {
                 paddingVertical: 20,
                 borderColor: '#c0c0c0',
               }}>
-              <Icon name="cellphone" size={30} color={'#9c27b0'} />
+              <Icon name='cellphone' size={30} color={'#9c27b0'} />
               <TextInput
                 style={{
                   height: 40,
@@ -160,11 +160,11 @@ const Account = () => {
                 }}
                 editable={!isEdit}
                 maxLength={10}
-                placeholder="Enter your phone number"
-                placeholderTextColor="#C0c0c0"
+                placeholder='Enter your phone number'
+                placeholderTextColor='#C0c0c0'
                 value={phone}
                 onChangeText={text => setPhone(text)}
-                keyboardType="number-pad"
+                keyboardType='number-pad'
               />
             </View>
             <View
@@ -176,7 +176,7 @@ const Account = () => {
                 paddingVertical: 20,
                 borderColor: '#c0c0c0',
               }}>
-              <Icon name="email" size={30} color={'#9c27b0'} />
+              <Icon name='email' size={30} color={'#9c27b0'} />
               <TextInput
                 style={{
                   height: 40,
@@ -187,8 +187,8 @@ const Account = () => {
                   width: screenDimension.width - 60,
                 }}
                 maxLength={30}
-                placeholder="Enter your e-mail"
-                placeholderTextColor="#C0c0c0"
+                placeholder='Enter your e-mail'
+                placeholderTextColor='#C0c0c0'
                 editable={!isEdit}
                 value={email}
                 onChangeText={text => setEmail(text.toLowerCase())}
@@ -203,7 +203,7 @@ const Account = () => {
                 paddingVertical: 20,
                 borderColor: '#c0c0c0',
               }}>
-              <Icon name="form-textbox-password" size={30} color={'#9c27b0'} />
+              <Icon name='form-textbox-password' size={30} color={'#9c27b0'} />
               <TextInput
                 style={{
                   height: 40,
@@ -215,8 +215,8 @@ const Account = () => {
                 }}
                 secureTextEntry={true}
                 maxLength={20}
-                placeholder="Enter your password"
-                placeholderTextColor="#C0c0c0"
+                placeholder='Enter your password'
+                placeholderTextColor='#C0c0c0'
                 editable={!isEdit}
                 value={password}
                 onChangeText={text => setPassword(text.toUpperCase)}
@@ -231,7 +231,7 @@ const Account = () => {
                 paddingVertical: 20,
                 borderColor: '#c0c0c0',
               }}>
-              <IconFontAwesome name="globe-asia" size={30} color={'#9c27b0'} />
+              <IconFontAwesome name='globe-asia' size={30} color={'#9c27b0'} />
               <TextInput
                 editable={!isEdit}
                 style={{
@@ -243,8 +243,8 @@ const Account = () => {
                   width: screenDimension.width - 60,
                 }}
                 maxLength={20}
-                placeholder="Enter your country"
-                placeholderTextColor="#C0c0c0"
+                placeholder='Enter your country'
+                placeholderTextColor='#C0c0c0'
                 value={country}
                 onChangeText={text => setCountry(text)}
               />

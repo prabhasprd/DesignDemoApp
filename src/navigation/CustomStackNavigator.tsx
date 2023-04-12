@@ -1,13 +1,19 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import Login from '../screen/Login';
 import BottomTabRouter from '../navigation/BottomTabRouter';
 import {AppProps} from './type';
+import StackNavigator from 'rn-theme-ss/src/navigation/stack';
 
-const StackComponent = createNativeStackNavigator();
+export interface StackProps {
+  stackScreenList: {
+    name: string;
+    component: React.FC<AppProps>;
+    isBottomTab?: boolean;
+  }[];
+}
 
-const stackScreen = [
+const stackScreen: StackProps['stackScreenList'] = [
   {
     name: 'Login',
     component: Login,
@@ -19,20 +25,13 @@ const stackScreen = [
   },
 ];
 
-const CustomStackNavigator = (props: AppProps) => {
+const CustomStackNavigator = () => {
   return (
     <NavigationContainer>
-      <StackComponent.Navigator
-        initialRouteName="Login"
-        screenOptions={{
-          headerShown: false,
-        }}>
-        {stackScreen.map((element, index) => (
-          <StackComponent.Screen name={element.name} key={index}>
-            {navigation => <element.component {...props} {...navigation} />}
-          </StackComponent.Screen>
-        ))}
-      </StackComponent.Navigator>
+      <StackNavigator
+        stackScreenList={stackScreen}
+        screenOptions={{headerShown: false}}
+      />
     </NavigationContainer>
   );
 };

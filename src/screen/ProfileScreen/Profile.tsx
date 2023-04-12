@@ -45,13 +45,15 @@ const Profile = (props: ProfileProps) => {
     (state: ReduxState) => state.appconfigLanguageReducer.language,
   );
   const {height, width} = screenDimension;
-  let leftButton: ButtonProps = {
+  const leftButton: ButtonProps = {
     name: 'leftButton',
     image: Back,
-    onPress: (): void => {},
+    onPress: (): void => {
+      navigation.goBack();
+    },
   };
 
-  let rightButton: ButtonProps = {
+  const rightButton: ButtonProps = {
     name: 'rightButton',
     image: Message,
     onPress: (): void => {
@@ -59,7 +61,7 @@ const Profile = (props: ProfileProps) => {
     },
   };
 
-  let arrayData = ['a', 'b', 'c', 'd'];
+  const arrayData = ['a', 'b', 'c', 'd'];
 
   return (
     <ScrollViewComponent>

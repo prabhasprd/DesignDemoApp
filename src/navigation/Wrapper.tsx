@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import {BackHandler, Appearance} from 'react-native';
+import {BackHandler, AppState} from 'react-native';
 import {useDispatch} from 'react-redux';
 import CustomStackNavigator from './CustomStackNavigator';
 import * as RNLocalize from 'react-native-localize';
@@ -7,11 +7,17 @@ import {systemLanguage, systemTheme} from '../redux/action/appconfig';
 import {languageData} from '../util/language/index';
 import {darkThemeColor, lightThemeColor} from '../util/colors';
 import {ReduxDispatch} from '../redux/store/type';
-import {AppProps, ColorSchemaType} from './type';
+import {ColorSchemaType} from './type';
+import useThemeSelector from 'rn-theme-ss/src/useThemeSelector';
 
 const Wrapper = () => {
-  const [theme, setTheme] = useState<AppProps['theme']>(lightThemeColor);
   const dispatch: ReduxDispatch = useDispatch();
+  const selectedTheme: ColorSchemaType['colorScheme'] = useThemeSelector();
+
+  const activeTheme: typeof darkThemeColor =
+    selectedTheme === 'dark' ? darkThemeColor : lightThemeColor;
+
+  dispatch(systemTheme(activeTheme));
 
   useEffect(() => {
     const backAction = (): boolean => {
@@ -24,28 +30,12 @@ const Wrapper = () => {
     return (): void => backHandler.remove();
   }, []);
 
-  function onThemeChange({colorScheme}: ColorSchemaType): void {
-    const selectTheme =
-      colorScheme === 'dark' ? lightThemeColor : darkThemeColor;
-    setTheme(selectTheme);
-    dispatch(systemTheme(selectTheme));
-  }
-
   useEffect(() => {
     onHandleChangeLanguage();
     RNLocalize.addEventListener('change', () => {
       onHandleChangeLanguage();
     });
     RNLocalize.removeEventListener('change', () => onHandleChangeLanguage);
-  }, []);
-
-  useEffect(() => {
-    const colorScheme = Appearance.getColorScheme();
-    onThemeChange({colorScheme});
-    const AppearanceListener = Appearance.addChangeListener(onThemeChange);
-    return () => {
-      AppearanceListener.remove();
-    };
   }, []);
 
   const onHandleChangeLanguage = (): void => {
@@ -62,7 +52,7 @@ const Wrapper = () => {
       ),
     );
   };
-  return <CustomStackNavigator theme={theme} />;
+  return <CustomStackNavigator />;
 };
 
 export default Wrapper;

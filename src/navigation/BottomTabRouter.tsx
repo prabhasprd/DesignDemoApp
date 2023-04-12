@@ -5,6 +5,9 @@ import Home from '../screen/HomeScreen/Home';
 import ProfileScreen from '../screen/ProfileScreen/Profile';
 import Account from '../screen/AccountScreen/Account';
 import {AppProps} from './type';
+import BottomTabRouterApp from 'rn-theme-ss/src/navigation/BottonTab';
+import {View, Text} from 'react-native';
+import {darkThemeColor, lightThemeColor} from '../util/colors';
 
 const Tab = createBottomTabNavigator();
 const BottomTabRouter = (props: AppProps) => {
@@ -16,79 +19,88 @@ const BottomTabRouter = (props: AppProps) => {
       tabBarLabel: 'Account',
       component: Account,
       tabBarLabelStyle: {fontSize: 14},
-      tabBarActiveTintColor: theme?.BOTTOM_BAR?.tabBarActiveTintColor,
-      tabBarDisableTintColor: theme?.BOTTOM_BAR?.tabBarDisableTintColor,
-      icon: {
-        name: 'account-circle',
-        size: 30,
-      },
+      tabBarActiveTintColor: lightThemeColor?.BOTTOM_BAR?.tabBarActiveTintColor,
+      tabBarDisableTintColor:
+        lightThemeColor?.BOTTOM_BAR?.tabBarDisableTintColor,
+      focusedIcon: (
+        <Icon
+          name={'account-circle'}
+          size={30}
+          color={lightThemeColor?.BOTTOM_BAR?.tabBarActiveTintColor}
+        />
+      ),
+      unFocusedIcon: (
+        <Icon
+          name={'account-circle'}
+          size={30}
+          color={lightThemeColor?.BOTTOM_BAR?.tabBarDisableTintColor}
+        />
+      ),
     },
     {
       label: 'Home',
       tabBarLabel: 'Home',
       component: Home,
       tabBarLabelStyle: {fontSize: 14},
-      tabBarActiveTintColor: theme?.BOTTOM_BAR?.tabBarActiveTintColor,
-      tabBarDisableTintColor: theme?.BOTTOM_BAR?.tabBarDisableTintColor,
-      icon: {
-        name: 'home',
-        size: 30,
-      },
+      tabBarActiveTintColor: lightThemeColor?.BOTTOM_BAR?.tabBarActiveTintColor,
+      tabBarDisableTintColor:
+        lightThemeColor?.BOTTOM_BAR?.tabBarDisableTintColor,
+      focusedIcon: (
+        <Icon
+          name={'home'}
+          size={30}
+          color={lightThemeColor?.BOTTOM_BAR?.tabBarActiveTintColor}
+        />
+      ),
+      unFocusedIcon: (
+        <Icon
+          name={'home'}
+          size={30}
+          color={lightThemeColor?.BOTTOM_BAR?.tabBarDisableTintColor}
+        />
+      ),
     },
     {
       label: 'Profile',
       tabBarLabel: 'Profile',
       component: ProfileScreen,
       tabBarLabelStyle: {fontSize: 14},
-      tabBarActiveTintColor: theme?.BOTTOM_BAR?.tabBarActiveTintColor,
-      tabBarDisableTintColor: theme?.BOTTOM_BAR?.tabBarDisableTintColor,
-      icon: {
-        name: 'cog-outline',
-        size: 30,
-      },
+      tabBarActiveTintColor: lightThemeColor?.BOTTOM_BAR?.tabBarActiveTintColor,
+      tabBarDisableTintColor:
+        lightThemeColor?.BOTTOM_BAR?.tabBarDisableTintColor,
+      focusedIcon: (
+        <Icon
+          name={'cog-outline'}
+          size={30}
+          color={lightThemeColor?.BOTTOM_BAR?.tabBarActiveTintColor}
+        />
+      ),
+      unFocusedIcon: (
+        <Icon
+          name={'cog-outline'}
+          size={30}
+          color={lightThemeColor?.BOTTOM_BAR?.tabBarDisableTintColor}
+        />
+      ),
     },
   ];
   return (
-    <Tab.Navigator
-      initialRouteName="Home"
+    <BottomTabRouterApp
+      initialRouteName={'Home'}
       screenOptions={{
         headerShown: false,
         tabBarStyle: {
           paddingVertical: 2,
           borderTopLeftRadius: 10,
           borderTopRightRadius: 10,
-          shadowColor: theme?.BOTTOM_BAR?.tabBarActiveTintColor,
+          shadowColor: lightThemeColor?.BOTTOM_BAR?.tabBarActiveTintColor,
           shadowOpacity: 0.6,
           shadowRadius: 5,
-          backgroundColor: theme?.BOTTOM_BAR?.backgroundColor,
+          backgroundColor: lightThemeColor?.BOTTOM_BAR?.backgroundColor,
         },
-      }}>
-      {bottomBar.map((item, index) => {
-        return (
-          <Tab.Screen
-            key={index}
-            name={item.label}
-            options={{
-              tabBarLabelStyle: item.tabBarLabelStyle,
-              tabBarActiveTintColor: item.tabBarActiveTintColor,
-              tabBarIcon: ({focused}) => (
-                <Icon
-                  name={item.icon.name}
-                  size={item.icon.size}
-                  color={
-                    focused
-                      ? item.tabBarActiveTintColor
-                      : item.tabBarDisableTintColor
-                  }
-                />
-              ),
-              tabBarLabel: item.tabBarLabel,
-            }}
-            component={item.component}
-          />
-        );
-      })}
-    </Tab.Navigator>
+      }}
+      tabScreenList={bottomBar}
+    />
   );
 };
 

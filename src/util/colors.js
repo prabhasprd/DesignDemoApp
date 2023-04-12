@@ -1,4 +1,5 @@
 export const lightThemeColor = {
+  base: 'light',
   ACCOUNT_UI: {
     backgroundColor: '#E2E1E4',
   },
@@ -18,9 +19,19 @@ export const lightThemeColor = {
     textShadowColor: 'rgba(0, 0, 0, 0.25);',
     buttonActiveColor: '#A974FF',
   },
+  LOGIN_SCREEN: {
+    backgroundColor: '#f9f9f9',
+    textColor: '#000',
+    iconColor: '#9662fc',
+  },
+  HOME_SCREEN: {
+    backgroundColor: '#f9f9f9',
+    textColor: '#000',
+  },
 };
 
 export const darkThemeColor = {
+  base: 'dark',
   ACCOUNT_UI: {
     backgroundColor: '#E2E1E4',
   },
@@ -39,5 +50,14 @@ export const darkThemeColor = {
     midnightBlueLight: 'rgba(37, 57, 111, 0.7)',
     textShadowColor: 'rgba(0, 0, 0, 0.25);',
     buttonActiveColor: '#A974FF',
+  },
+  LOGIN_SCREEN: {
+    backgroundColor: '#445377',
+    textColor: '#fff',
+    iconColor: '#DCDCDC',
+  },
+  HOME_SCREEN: {
+    backgroundColor: '#445377',
+    textColor: '#fff',
   },
 };
